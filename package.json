@@ -7,7 +7,7 @@
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
     "start": "webpack-dev-server --progress --color --inline --env.dev",
     "build": "webpack -p --progress --env.prod",
-    "clean": "rimraf ./build"
+    "clean": "rimraf ./dist"
   },
   "author": "William Seo",
   "license": "ISC",
@@ -16,6 +16,12 @@
     "npm": ">= 5.6.0"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "^4.3.1",
     "css-hot-loader": "^1.3.6",
     "css-loader": "^0.28.9",
@@ -35,12 +41,9 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.38",
-    "@babel/preset-env": "^7.0.0-beta.38",
-    "@babel/preset-react": "^7.0.0-beta.38",
-    "babel-loader": "8.0.0-beta.0",
     "bootstrap": "^4.0.0",
     "chart.js": "^2.7.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "flag-icon-css": "^2.9.0",
     "font-awesome": "^4.7.0",
@@ -49,12 +52,14 @@
     "jquery": "^3.3.1",
     "mongodb": "^3.0.1",
     "mongoose": "^5.0.1",
+    "morgan": "^1.9.0",
     "react": "^16.2.0",
     "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.1",
     "reactstrap": "5.0.0-alpha.4",
+    "serve-favicon": "^2.4.5",
     "simple-line-icons": "^2.4.1"
   }
 }

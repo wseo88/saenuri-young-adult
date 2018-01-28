@@ -40,7 +40,8 @@ module.exports = (env = {}) => {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              presets: ['react', 'env']
+              presets: ['@babel/preset-react', '@babel/preset-env'],
+              plugins: [require('@babel/plugin-proposal-object-rest-spread')]
             }
           }
         },

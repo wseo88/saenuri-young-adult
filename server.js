@@ -16,6 +16,7 @@ mongoose.connect(mongoDB)
 
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
+const db = mongoose.connection;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -26,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
 
-const member = require('./routes/member');
+const member = require('./server/routes/member');
 app.use('/member', member);
 
 // uncomment after placing your favicon in /public

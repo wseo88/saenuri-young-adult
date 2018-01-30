@@ -37,7 +37,10 @@ module.exports = (env = {}) => {
       //   port: 9001,
       compress: true,
       hot: true,
-      open: true
+      open: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     },
     module: {
       rules: [

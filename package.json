@@ -45,6 +45,7 @@
     "bootstrap": "^4.0.0",
     "chart.js": "^2.7.1",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "flag-icon-css": "^2.9.0",
     "font-awesome": "^4.7.0",

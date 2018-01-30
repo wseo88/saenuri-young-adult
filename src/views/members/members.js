@@ -17,11 +17,10 @@ class Members extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: [] };
-
+    this.state = { members: [] };
   }
 
-  fetchAllMembersFromServer() {
+  componentDidMount() {
     axios.get('http://localhost:3000/member/all', {
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -32,7 +31,6 @@ class Members extends Component {
   }
 
   render() {
-    this.fetchAllMembersFromServer();
     return (
       <div className="animated fadeIn">
         <Row>
@@ -55,7 +53,7 @@ class Members extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.members.map(member => <MemberItem member={member} />)}
+                    {this.state.members.map(member => <MemberItem key={member._id} member={member} />)}
                   </tbody>
                 </Table>
                 {/* <nav>
@@ -82,7 +80,7 @@ class Members extends Component {
 class MemberItem extends Component {
   render() {
     return (
-      <tr>
+      <tr key={this.props.member.id}>
         <td>{this.props.member.name.korean}</td>
         <td>{this.props.member.name.first} {this.props.member.name.last}</td>
         <td>{this.props.member.email}</td>

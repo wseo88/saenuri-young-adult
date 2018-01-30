@@ -1,0 +1,6 @@
+{
+  "name": "Small Groups",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./small_groups.js"
+}

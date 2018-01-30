@@ -3,11 +3,17 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'icon-speedometer',
-      badge: {
-        variant: 'info',
-        text: 'NEW'
-      }
+      icon: 'icon-speedometer'
+    },
+    {
+      name: 'Members',
+      url: '/members',
+      icon: 'icon-user'
+    },
+    {
+      name: 'Small Groups',
+      url: '/small_groups',
+      icon: 'icon-people'
     }
   ]
 };

@@ -17,9 +17,19 @@ import '../scss/core/_dropdown-menu-right.scss'
 // Containers
 import Full from './containers/Full/'
 
+// Views
+// import Login from './views/Auth/Login/'
+// import Register from './views/Auth/Register/'
+import Page404 from './views/status/page404/'
+import Page500 from './views/status/page500/'
+
 ReactDOM.render((
   <HashRouter>
     <Switch>
+      {/* <Route exact path="/login" name="Login Page" component={Login}/>
+      <Route exact path="/register" name="Register Page" component={Register}/> */}
+      <Route exact path="/404" name="Page 404" component={Page404}/>
+      <Route exact path="/500" name="Page 500" component={Page500}/>
       <Route path="/" name="Home" component={Full}/>
     </Switch>
   </HashRouter>

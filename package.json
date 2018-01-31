@@ -68,5 +68,6 @@
     "reactstrap": "5.0.0-alpha.4",
     "serve-favicon": "^2.4.5",
     "simple-line-icons": "^2.4.1"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }

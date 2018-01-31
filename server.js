@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport');
+const session = require('express-session');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -30,12 +32,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   next();
 // });
 app.use(cors());
+app.use(session({
+  secret: 's3cr3t',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
 
 const member = require('./server/routes/member');
+const auth = require('./server/routes/auth');
+const users = require('./server/routes/users');
+
 app.use('/member', member);
+app.use('/auth', auth);
+app.use('/users', users);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

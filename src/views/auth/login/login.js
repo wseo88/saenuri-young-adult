@@ -34,6 +34,9 @@ class Login extends Component {
                       <Col xs="6">
                         <Button color="primary" className="px-4">Login</Button>
                       </Col>
+                      <Col xs="6">
+                        <Button color="danger" className="px-4"><a href="http://localhost:3000/auth/google">Google</a></Button>
+                      </Col>
                       <Col xs="6" className="text-right">
                         <Button color="link" className="px-0">Forgot password?</Button>
                       </Col>

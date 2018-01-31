@@ -1,4 +1,4 @@
-const Member = require('../models/member.model.js');
+const Member = require('../../models/member.model.js');
 
 const updateMemberInfo = (member, req) => {
     member.name.first = req.body.firstName;

@@ -12,6 +12,7 @@ import {
   PaginationLink
 } from 'reactstrap';
 import axios from 'axios';
+import BootstrapTable from 'react-bootstrap-table-next';
 
 class Members extends Component {
 
@@ -31,6 +32,19 @@ class Members extends Component {
   }
 
   render() {
+    const columns = [{
+      dataField: 'name.korean',
+      text: 'Name'
+    }, {
+      dataField: 'name.first',
+      text: 'English Name'
+    }, {
+      dataField: 'email',
+      text: 'Email'
+    }, {
+      dataField: 'phone',
+      text: 'Phone'
+    }];
     return (
       <div className="animated fadeIn">
         <Row>
@@ -40,7 +54,8 @@ class Members extends Component {
                 <i className="fa fa-align-justify"></i> Members
               </CardHeader>
               <CardBody>
-                <Table striped responsive>
+                <BootstrapTable keyField='id' data={ this.state.members } columns={ columns } />
+                {/* <Table striped responsive>
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -55,7 +70,7 @@ class Members extends Component {
                   <tbody>
                     {this.state.members.map(member => <MemberItem key={member._id} member={member} />)}
                   </tbody>
-                </Table>
+                </Table> */}
                 {/* <nav>
                   <Pagination>
                     <PaginationItem><PaginationLink previous href="#">Prev</PaginationLink></PaginationItem>

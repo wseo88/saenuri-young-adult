@@ -40,10 +40,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-
 const member = require('./server/routes/member');
 const auth = require('./server/routes/auth');
 const users = require('./server/routes/users');
@@ -52,8 +48,8 @@ app.use('/member', member);
 app.use('/auth', auth);
 app.use('/users', users);
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// favicon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.get('/', (req, res) => {
   db.collection('members').find().toArray((err, res) => {

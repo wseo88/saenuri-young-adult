@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
     "start": "webpack-dev-server --progress --color --inline --env.dev",
+    "server": "nodemon ./bin/www",
     "build": "webpack -p --progress --env.prod",
     "clean": "rimraf ./dist"
   },

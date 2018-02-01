@@ -1,0 +1,4 @@
+{
+    "mongodbURL": "mongodb://admin:ncbcyag123@ds111648.mlab.com:11648/ncbc-young-adult",
+    "jwtSecret": "supercalifragilisticexpialidocious"
+}

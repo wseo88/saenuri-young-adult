@@ -1,4 +1,6 @@
 const express = require('express');
+
+const config = require('./config');
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
@@ -10,16 +12,8 @@ const cors = require('cors');
 
 const app = express();
 
-//Set up default mongoose connection
-const mongoose = require('mongoose');
-const mongoDB = 'mongodb://admin:ncbcyag123@ds111648.mlab.com:11648/ncbc-young-adult';
-mongoose.connect(mongoDB)
-  .then(() => console.log('connection succesful'))
-  .catch((err) => console.error(err));
-
-// Get Mongoose to use the global promise library
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+// connect to the database and load models
+require('./server/models').connect(config.mongodbURL);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

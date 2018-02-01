@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+var passportLocalMongoose = require('passport-local-mongoose');
 
 // define the User model schema
 const UserSchema = new mongoose.Schema({
@@ -10,6 +11,8 @@ const UserSchema = new mongoose.Schema({
   password: String,
   name: String
 });
+
+UserSchema.plugin(passportLocalMongoose);
 
 /**
  * Compare the passed password with the value in the database. A model method.

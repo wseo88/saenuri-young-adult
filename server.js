@@ -2,6 +2,7 @@ const express = require('express');
 
 const config = require('./config');
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -19,12 +20,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 app.use(cors());
 app.use(session({
   secret: 's3cr3t',
@@ -33,6 +28,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
 
 const member = require('./server/routes/member');
 const auth = require('./server/routes/auth');
@@ -41,6 +37,16 @@ const users = require('./server/routes/users');
 app.use('/member', member);
 app.use('/auth', auth);
 app.use('/users', users);
+
+// load passport strategies
+const localRegisterStrategy = require('./server/auth/local-register');
+const localLoginStrategy = require('./server/auth/local-login');
+passport.use('local-register', localRegisterStrategy);
+passport.use('local-login', localLoginStrategy);
+
+// pass the authenticaion checker middleware
+const authCheckMiddleware = require('./server/middleware/auth-check');
+app.use('/api', authCheckMiddleware);
 
 // favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

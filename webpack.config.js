@@ -18,7 +18,7 @@ const CopyWebpackPluginConfig = new CopyWebpackPlugin([
 const extractCSS = new ExtractTextPlugin('[name].fonts.css');
 const extractSCSS = new ExtractTextPlugin('[name].styles.css');
 
-const DIST_DIR = path.resolve(__dirname, 'dist');
+const DIST_DIR = path.resolve(__dirname, 'public');
 const SRC_DIR = path.resolve(__dirname, 'src');
 
 module.exports = (env = {}) => {
@@ -28,13 +28,15 @@ module.exports = (env = {}) => {
     },
     output: {
       path: DIST_DIR,
-      filename: '[name].bundle.js'
+      filename: '[name].bundle.js',
+      publicPath: '/'
     },
     // watch: true,
     devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       contentBase: DIST_DIR,
-      //   port: 9001,
+      historyApiFallback: true,
+      port: 9000,
       compress: true,
       hot: true,
       open: true,

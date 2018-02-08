@@ -26,17 +26,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const member = require('./server/routes/member');
-const auth = require('./server/routes/auth');
-const users = require('./server/routes/users');
-
-app.use('/member', member);
-app.use('/auth', auth);
-app.use('/users', users);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // load passport strategies
 const localRegisterStrategy = require('./server/auth/local-register');
@@ -44,9 +37,18 @@ const localLoginStrategy = require('./server/auth/local-login');
 passport.use('local-register', localRegisterStrategy);
 passport.use('local-login', localLoginStrategy);
 
-// pass the authenticaion checker middleware
+// pass the authentication checker middleware
 const authCheckMiddleware = require('./server/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
+
+// routes
+const member = require('./server/routes/member');
+const auth = require('./server/routes/auth');
+const users = require('./server/routes/users');
+
+app.use('/member', member);
+app.use('/auth', auth);
+app.use('/users', users);
 
 // favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

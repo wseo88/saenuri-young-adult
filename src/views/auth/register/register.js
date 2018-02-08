@@ -1,5 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {Container, Form, Row, Col, Card, CardBody, CardText, CardFooter, Button, Input, InputGroup, InputGroupAddon} from 'reactstrap';
+import Auth from '../../../modules/Auth';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -49,7 +51,7 @@ class Register extends Component {
       headers: {
       }
     }).then(res => {
-      if (xhr.status === 200) {
+      if (res.status === 200) {
         // success
 
         // change the component-container state
@@ -57,11 +59,14 @@ class Register extends Component {
           errors: {}
         });
 
+        // save the token
+        Auth.authenticateUser(res.token);
+
         // set a message
         localStorage.setItem('successMessage', res.message);
 
         // make a redirect
-        this.context.router.replace('/login');
+        this.context.router.history.push('/login');
       } else {
         // failure
 
@@ -145,5 +150,9 @@ class Register extends Component {
     );
   }
 }
+
+Register.contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
 export default Register;

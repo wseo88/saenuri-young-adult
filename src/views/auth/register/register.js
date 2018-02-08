@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Container, Form, Row, Col, Card, CardBody, CardText, CardFooter, Button, Input, InputGroup, InputGroupAddon} from 'reactstrap';
+import { Container, Form, Row, Col, Card, CardBody, CardText, CardFooter, Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import Auth from '../../../modules/Auth';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -40,7 +40,6 @@ class Register extends Component {
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `name=${name}&email=${email}&password=${password}`;
 
     // create an AJAX request
 

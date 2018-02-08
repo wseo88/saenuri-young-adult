@@ -17,6 +17,9 @@ function validateRegisterForm(payload) {
   let isFormValid = true;
   let message = '';
 
+  console.log(payload.email);
+  console.log(payload.password);
+
   if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
       isFormValid = false;
       errors.email = 'Please provide a correct email address.';
